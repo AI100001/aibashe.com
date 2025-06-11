@@ -150,15 +150,31 @@
             color: #9aa0a6;
         }
 
+        /* 修改开始：导航分类按钮单行显示 */
         .nav-categories {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            justify-content: flex-start; /* 按钮左对齐，内容多时可滚动 */
+            /* 移除 flex-wrap: wrap; 防止换行 */
             gap: 12px;
             margin-bottom: 30px;
+            overflow-x: auto; /* 允许水平滚动 */
+            -webkit-overflow-scrolling: touch; /* 改善 iOS 上的滚动体验 */
+            white-space: nowrap; /* 防止内部元素换行 */
+            padding-bottom: 10px; /* 为滚动条预留空间 */
+        }
+
+        /* 可选：为滚动条添加样式 */
+        .nav-categories::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .nav-categories::-webkit-scrollbar-thumb {
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 3px;
         }
 
         .category-btn {
+            flex-shrink: 0; /* 防止按钮收缩 */
             padding: 12px 24px;
             background: rgba(255,255,255,0.9);
             color: #5f6368;
@@ -170,6 +186,7 @@
             font-weight: 500;
             font-family: inherit;
         }
+        /* 修改结束 */
 
         .category-btn:hover {
             background: white;
@@ -398,7 +415,6 @@
                 <input type="text" class="search-input" id="searchInput">
             </div>
 
-            <!-- 统计数据展示区域 -->
             <div class="stats-section">
                 <div class="stats-grid">
                     <div class="stat-item">
